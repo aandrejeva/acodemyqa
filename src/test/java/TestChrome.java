@@ -7,9 +7,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import static lv.acodemy.constants.Generic.GOOGLE_URL;
+
 public class TestChrome {
     ChromeDriver driver = new ChromeDriver();
-    public static final String GOOGLE_URL = "https://www.google.lv/?hl=en";
 
     /*@BeforeTest
     public void prepareChromeDriver() {
