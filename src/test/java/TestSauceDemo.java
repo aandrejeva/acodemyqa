@@ -1,6 +1,8 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lv.acodemy.page_object.InventoryPage;
 import lv.acodemy.page_object.LoginPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +17,12 @@ public class TestSauceDemo {
 
     @BeforeMethod(description = "Preconditions")
     public void initialize() {
-        driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().browserVersion("108");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); //won't open the webpage
+
+        driver = new ChromeDriver(options);
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
         driver.get(SAUCE_URL);

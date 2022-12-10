@@ -4,13 +4,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static lv.acodemy.constants.Generic.GOOGLE_URL;
 
 public class TestChrome {
-    ChromeDriver driver = new ChromeDriver();
+    ChromeDriver driver;
+
+    @BeforeMethod
+    public void before() {
+        driver = new ChromeDriver();
+    }
 
     /*@BeforeTest
     public void prepareChromeDriver() {
@@ -23,7 +29,7 @@ public class TestChrome {
         driver.quit();
     }
 
-    @Test
+    @Test(enabled = false)
     public void chromeTest() {
 
         driver.get(GOOGLE_URL);
